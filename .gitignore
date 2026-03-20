@@ -51,3 +51,6 @@ Thumbs.db
 .coverage
 htmlcov/
 .pytest_cache/
+
+#Tasks and personnal notes
+flow.md
