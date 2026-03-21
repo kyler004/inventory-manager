@@ -136,3 +136,57 @@ class StockMovement(models.Model):
     def __str__(self): 
         return f"{self.movement_type} - {self.product.name} x{self.quantity}"
 
+class StockAdjustment(models.Model):
+    """
+    A formal record of a manual stock correction.
+    Requires a reason and approval - creates a stockMovement automatically.
+    Key tool for detecting and documenting shrinkage.
+    """
+
+    class AdjustmentReason(models.TextChoices):
+        DAMAGE = 'damage', 'Damage'
+        THEFT = 'theft', 'Theft'
+        EXPIRY = 'expiry', 'Expiry'
+        COUNTING_ERROR = 'counting_error', 'Counting Error'
+        SUPPLIER_ERROR = 'supplier_error', 'Supplier Error'
+        OTHER = 'other', 'Other'
+    
+    product = models.ForeignKey(
+        'products.Product', 
+        on_delete=models.PROTECT, 
+        related_name='adjustments'
+    )
+    location = models.ForeignKey(
+        'locations.Location', 
+        on_delete=models.PROTECT, 
+        related_name='adjustments'
+    )
+    quantity_before = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity_after = models.DecimalField(max_digits=10, decimal_places=2)
+    reason = models.CharField(max_length=30, choices=AdjustmentReason.choices)
+    notes = models.TextField(blank=True)
+    performed_by = models.ForeignKey(
+        'users.User', 
+        on_delete=models.PROTECT, 
+        related_name='adjustments_made'
+    )
+    approved_by = models.ForeignKey(
+        'users.User', 
+        on_delete=models.PROTECT, 
+        null=True, 
+        blank=True, 
+        related_name='adjustments_approved', 
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    #No updated_at as this is report too. 
+
+    class Meta: 
+        db_table = 'stock_adjustments'
+    
+    @property
+    def quantity_change(self): 
+        return self.quantity_after - self.quantity_before
+    
+    def __str__(self):
+        return f"Adjustment: {self.product.name} ({self.quantity_change})"
+
