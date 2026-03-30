@@ -57,7 +57,7 @@ class ProductSerializer(serializers.ModelSerializer):
                 "Retail price cannot be loer than the cost price."
             )
         return data
-
+ 
 class ProductListSerializer(serializers.ModelSerializer):
     """
     Lightweight serializer for list views — fewer fields = faster response.
