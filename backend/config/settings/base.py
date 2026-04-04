@@ -24,6 +24,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist', # Ability to blacklist a token (access token)
     'corsheaders',
     'django_filters',
     'drf_spectacular',
