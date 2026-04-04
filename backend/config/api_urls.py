@@ -1,5 +1,5 @@
 from django.urls import path, include
-from rest_framework import DefaultRouter
+from rest_framework.routers import DefaultRouter
 
 from apps.products.views import ProductViewSet, CategoryViewSet
 from apps.stock.views import (
@@ -21,6 +21,6 @@ router.register(r'stock/adjustments', StockAdjustmentViewSet, basename="stock-ad
 router.register(r'stock/movements', StockMovementViewSet, basename='stock-movement')
 
 urlpatterns = [
-    path('', router.urls), 
+    path('', include(router.urls)), 
     path('auth/', include('apps.authentication.urls')),
 ]

@@ -82,7 +82,7 @@ class StockMovement(models.Model):
     From our planning — Module 3: Stock Management.
     """
 
-    class MovementType(models.Model): 
+    class MovementType(models.TextChoices): 
         RECEIVING = 'receiving', 'Receiving'        # Goods arrived from supplier
         SALE = 'sale', 'Sale'                       # Sold at POS
         TRANSFER_IN = 'transfer_in', 'Transfer In'  # Arrived from another location
@@ -97,7 +97,7 @@ class StockMovement(models.Model):
         related_name='movements'
     )
     from_location = models.ForeignKey(
-        'location.Location', 
+        'locations.Location', 
         on_delete=models.PROTECT, 
         null=True, 
         blank=True, 

@@ -20,4 +20,4 @@ class ProductFilter(django_filters.FilterSet):
 
     class Meta: 
         model = Product
-        fields = ['is_active' ,'brand', 'measure']
+        fields = ['is_active' ,'brand', 'unit_of_measure']
