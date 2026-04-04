@@ -17,7 +17,7 @@ class StockLevelSerializer(serializers.ModelSerializer):
         model = StockLevel
         fields = [
             'id', 'product', 'location', 'location_name', 'zone', 'quantity_on_hand', 'quantity_reserved', 
-            'reorder_point', 'reorder_quantity', 'max_stock_level', 'stock_status', 'last_updated'
+            'quantity_available', 'reorder_point', 'reorder_quantity', 'max_stock_level', 'stock_status', 'last_updated'
         ]
 
 class StockMovementSerializer(serializers.ModelSerializer): 
