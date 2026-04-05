@@ -1,5 +1,6 @@
-import axios, { AxiosError, InternalAxiosRequestConfig} from 'axios' // => mihght need to change this later on unless the security issue with axios is over
-import {useAuthStore} from '@store/authStore' // => will be implemented later
+import axios from 'axios'
+import type { AxiosError, InternalAxiosRequestConfig } from 'axios'
+import { useAuthStore } from '@/store/authStore'
 
 const client = axios.create({
     baseURL: '/api/v1', //Uses Vite proxy in dev, nginx will be used in production
