@@ -1,6 +1,6 @@
 import client from './client'
-import { StockLevel, StockAdjustment } from '@/types/stock.types'
-import { PaginatedResponse, ApiResponse } from '@/types/api.types'
+import type { StockLevel, StockAdjustment } from '@/types/stock.types'
+import type { PaginatedResponse, ApiResponse } from '@/types/api.types'
 
 export const stockApi = {
     getStockLevels: async (params?: Record<string, unknown>) => {
