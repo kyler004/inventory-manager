@@ -1,6 +1,6 @@
 // These mirror our data models exactly — type safety across the entire frontend.
 // standard response envelopes from our API design
-export interface APiResponse<T> {
+export interface ApiResponse<T> {
   status: "success" | "error";
   data: T;
 }
