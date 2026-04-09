@@ -1,23 +1,8 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-// import { productsApi } from "@/api/products.api";
+import { productsApi } from "@/api/products.api";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Plus } from "lucide-react";
-
-// We need to add this API module
-import client from "@/api/client";
-import type { PaginatedResponse } from "@/types/api.types";
-import type { Product } from "@/types/product.types";
-
-const productsApi = {
-  getProducts: async (params?: Record<string, unknown>) => {
-    const response = await client.get<PaginatedResponse<Product>>(
-      "/products/",
-      { params },
-    );
-    return response.data;
-  },
-};
 
 export const ProductsPage = () => {
   const [search, setSearch] = useState("");

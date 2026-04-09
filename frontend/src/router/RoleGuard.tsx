@@ -3,8 +3,8 @@ import { useAuthStore } from "@/store/authStore";
 import type { UserRole } from "@/types/user.types";
 
 interface Props {
-  allowedRoles: UserRole[];
   children: React.ReactNode;
+  allowedRoles: UserRole[];
 }
 
 export const RoleGuard = ({ allowedRoles, children }: Props) => {
