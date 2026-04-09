@@ -3,7 +3,7 @@ import { useStockLevels } from "@/hooks/useStock";
 import { PageHeader } from "@/components/common/PageHeader";
 import { StatusBadge } from "@/components/common/StatusBadge";
 
-export const StockPages = () => {
+export const StockPage = () => {
   const [search, setSearch] = useState("");
   const { data, isLoading } = useStockLevels();
 

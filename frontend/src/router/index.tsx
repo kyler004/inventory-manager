@@ -5,7 +5,7 @@ import { AppShell } from "@/components/layout/AppShell";
 
 import { LoginPage } from "@/pages/auth/LoginPage";
 import { DashboardPage } from "@/pages/dashboard/DashboardPage";
-import { ProductPage } from "@/pages/products/ProductsPage";
+import { ProductsPage } from "@/pages/products/ProductsPage";
 import { StockPage } from "@/pages/stock/StockPage";
 import { UnauthorizedPage } from "@/pages/UnauthorizedPage";
 
@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       { index: true, element: <DashboardPage /> },
-      { path: "products", element: <ProductPage /> },
+      { path: "products", element: <ProductsPage /> },
       { path: "stock", element: <StockPage /> },
       {
         path: "settings/users",

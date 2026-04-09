@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { productsApi } from "@/api/products.api";
+// import { productsApi } from "@/api/products.api";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Plus } from "lucide-react";
 
