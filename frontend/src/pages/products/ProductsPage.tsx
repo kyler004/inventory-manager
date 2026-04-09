@@ -1,16 +1,14 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { productsApi } from "@/api/products.api";
+// import { useQuery } from "@tanstack/react-query";
+import { useProducts } from "@/hooks/useProducts";
+// import { productsApi } from "@/api/products.api";
 import { PageHeader } from "@/components/common/PageHeader";
 import { Plus } from "lucide-react";
 
 export const ProductsPage = () => {
   const [search, setSearch] = useState("");
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["products", { search }],
-    queryFn: () => productsApi.getProducts({ search }),
-  });
+  const { data, isLoading } = useProducts(); 
 
   return (
     <div>
