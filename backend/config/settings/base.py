@@ -1,5 +1,6 @@
 from pathlib import Path
 from decouple import config
+from celery.schedules import crontab
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -156,3 +157,19 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# ----------- Celery Beat Schedule ----------
+
+CELERY_BEAT_SCHEDULE = {
+    # check stock levels every hour
+    'check-low-stock': {
+        'task': 'apps.stock.tasks.check_low_stock', 
+        'schedule': crontab(minute=0), #Every hour on the hour
+    }, 
+    # Check expiring batches every night at midnights 
+    'check-expiring-batches' : {
+        'task': 'apps.stock.tasks.check_expiring_batches', 
+        'schedule': crontab(hour=0, minute=0), #Midnight daily
+    }
+}
