@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { authApi } from "@/api/auth.api";
 import { useAuthStore } from "@/store/authStore";
+import { wsManager } from "@/lib/websocket";
 import toast from "react-hot-toast";
 
 // Zod schema - defines and validates the form shape
@@ -35,6 +36,10 @@ export const LoginPage = () => {
       const response = await authApi.login(data.email, data.password);
       // Store tokens and user in Zustand (persisted to Localstorage)
       setAuth(response.user, response.access, response.refresh);
+
+      // connect websocket immediately after login
+      wsManager.connect();
+
       toast.success(`Welcome back, ${response.user.name}!`);
       navigate("/");
     } catch {

@@ -2,6 +2,7 @@ import { Bell, LogOut } from "lucide-react"
 import { useAuthStore } from "@/store/authStore"
 import { authApi } from "@/api/auth.api"
 import { useNavigate } from "react-router-dom"
+import { wsManager } from "@/lib/websocket"
 import toast from "react-hot-toast"
 
 export const Topbar = () => {
@@ -10,6 +11,7 @@ export const Topbar = () => {
     const navigate = useNavigate()
 
     const handleLogout = async () => {
+        wsManager.disconnect()
         try {
             if (refreshToken) await authApi.logout(refreshToken)
         } catch {
