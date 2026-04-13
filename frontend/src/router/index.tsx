@@ -8,6 +8,7 @@ import { DashboardPage } from "@/pages/dashboard/DashboardPage";
 import { ProductsPage } from "@/pages/products/ProductsPage";
 import { StockPage } from "@/pages/stock/StockPage";
 import { UnauthorizedPage } from "@/pages/UnauthorizedPage";
+import { PurchaseOrdersPage } from "@/pages/purchase_orders/PurchaseOrdersPage";
 
 export const router = createBrowserRouter([
   {
@@ -28,8 +29,24 @@ export const router = createBrowserRouter([
       {
         path: "settings/users",
         element: (
-          <RoleGuard>
+          <RoleGuard
+            allowedRoles={[
+              "Admin",
+              "Auditor",
+              "Cashier",
+              "StoreManager",
+              "WarehouseManager",
+            ]}
+          >
             <div className="">USers Page - coming soon</div>
+          </RoleGuard>
+        ),
+      },
+      {
+        path: "purchase-orders",
+        element: (
+          <RoleGuard allowedRoles={["Admin", "WarehouseManager"]}>
+            <PurchaseOrdersPage />
           </RoleGuard>
         ),
       },
