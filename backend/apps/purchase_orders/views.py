@@ -48,7 +48,7 @@ class PurchaseOrderViewSet(viewsets.ModelViewSet):
         """
         try: 
             receipt = PurchaseOrderServices.receive_goods(
-                purchase_order_id=px, 
+                purchase_order_id=pk, 
                 received_at=request.data.get('received_at'), 
                 items_data=request.data.get('items', []), 
                 user=request.user 
