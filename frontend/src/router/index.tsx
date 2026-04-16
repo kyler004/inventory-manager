@@ -9,6 +9,7 @@ import { ProductsPage } from "@/pages/products/ProductsPage";
 import { StockPage } from "@/pages/stock/StockPage";
 import { UnauthorizedPage } from "@/pages/UnauthorizedPage";
 import { PurchaseOrdersPage } from "@/pages/purchase_orders/PurchaseOrdersPage";
+import { TransfersPage } from "@/pages/transfers /TransfersPage";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +48,16 @@ export const router = createBrowserRouter([
         element: (
           <RoleGuard allowedRoles={["Admin", "WarehouseManager"]}>
             <PurchaseOrdersPage />
+          </RoleGuard>
+        ),
+      },
+      {
+        path: "transfers",
+        element: (
+          <RoleGuard
+            allowedRoles={["Admin", "WarehouseManager", "StoreManager"]}
+          >
+            <TransfersPage />
           </RoleGuard>
         ),
       },
