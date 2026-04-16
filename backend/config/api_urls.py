@@ -1,6 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
+from apps.transfers.views import StockTransferViewSet
 from apps.products.views import ProductViewSet, CategoryViewSet
 from apps.stock.views import (
     StockLevelViewSet, StockAdjustmentViewSet, StockMovementViewSet
@@ -10,6 +11,9 @@ from apps.stock.views import (
 # for each viewset - list, detail, create, update, delete
 
 router = DefaultRouter()
+
+# transfers
+router.register(r'transfer', StockLevelViewSet, basename='transfer')
 
 #Product
 router.register(r'products', ProductViewSet, basename='product')
