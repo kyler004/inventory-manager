@@ -13,7 +13,7 @@ from apps.stock.views import (
 router = DefaultRouter()
 
 # transfers
-router.register(r'transfer', StockLevelViewSet, basename='transfer')
+router.register(r'transfer', StockTransferViewSet, basename='transfer')
 
 #Product
 router.register(r'products', ProductViewSet, basename='product')
