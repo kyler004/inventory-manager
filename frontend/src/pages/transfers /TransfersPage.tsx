@@ -1,4 +1,4 @@
-import { useTransfers, useApproveTransfer, useDispatchTransfer } from '@/hooks/useTransfers'
+import { useTransfers, useApproveTransfer, useDispatchTransfer } from '@/hooks/useTransfer'
 import { PageHeader } from '@/components/common/PageHeader'
 import { useAuthStore } from '@/store/authStore'
 import { Plus } from 'lucide-react'

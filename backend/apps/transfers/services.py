@@ -92,7 +92,7 @@ class TransferService:
         
         for recieved in received_items_data: 
             item = StockTransferItem.objects.select_for_update().get(
-                transfer=transfer
+                transfer=transfer, 
                 product_id=received['product.id']
             )
 
