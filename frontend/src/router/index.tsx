@@ -10,6 +10,7 @@ import { StockPage } from "@/pages/stock/StockPage";
 import { UnauthorizedPage } from "@/pages/UnauthorizedPage";
 import { PurchaseOrdersPage } from "@/pages/purchase_orders/PurchaseOrdersPage";
 import { TransfersPage } from "@/pages/transfers /TransfersPage";
+import { ReportsPage } from "@/pages/reports/ReportsPage";
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +59,21 @@ export const router = createBrowserRouter([
             allowedRoles={["Admin", "WarehouseManager", "StoreManager"]}
           >
             <TransfersPage />
+          </RoleGuard>
+        ),
+      },
+      {
+        path: "reports",
+        element: (
+          <RoleGuard
+            allowedRoles={[
+              "Admin",
+              "WarehouseManager",
+              "StoreManager",
+              "Auditor",
+            ]}
+          >
+            <ReportsPage />
           </RoleGuard>
         ),
       },
