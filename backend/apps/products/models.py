@@ -32,7 +32,7 @@ class Product(models.Model):
     Every other module will reference the product
     """
 
-    class UnitofMeasure(models.TextChoices): 
+    class UnitOfMeasure(models.TextChoices): 
         KG = 'kg', 'Kilogram'
         LITRE = 'litre', 'Litre'
         PIECE = 'piece', 'Piece'
@@ -53,8 +53,8 @@ class Product(models.Model):
     brand = models.CharField(max_length=100, blank=True)
     unit_of_measure = models.CharField(
         max_length=20, 
-        choices=UnitofMeasure.choices, 
-        default=UnitofMeasure.PIECE
+        choices=UnitOfMeasure.choices, 
+        default=UnitOfMeasure.PIECE
     )
     unit_price_cost = models.DecimalField(
         max_digits=10, 

@@ -5,7 +5,7 @@ from apps.stock.models import StockLevel, StockMovement
 from apps.batches.models import Batch
 from apps.alerts.models import Alert
 
-class PurchaseOrderServices: 
+class PurchaseOrderService: 
 
     @staticmethod
     @transaction.atomic

@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from .models import PurchaseOrder
 from .serializers import PurchaseOrderSerializer, GoodsReceiptSerializer
-from .services import PurchaseOrderServices
+from .services import PurchaseOrderService
 from apps.users.permissions import IsWarehouseManagerOrAbove
 
 # Create your views here.
@@ -47,7 +47,7 @@ class PurchaseOrderViewSet(viewsets.ModelViewSet):
         The big one - triggers the full receive_goods transaction.
         """
         try: 
-            receipt = PurchaseOrderServices.receive_goods(
+            receipt = PurchaseOrderService.receive_goods(
                 purchase_order_id=pk, 
                 received_at=request.data.get('received_at'), 
                 items_data=request.data.get('items', []), 
@@ -67,7 +67,7 @@ class PurchaseOrderViewSet(viewsets.ModelViewSet):
     def _transition(self, pk, new_status, user):
         """Helper to avoid repeating transition logic in every action. """
         try: 
-            po = PurchaseOrderServices.update_status(pk, new_status, user)
+            po = PurchaseOrderService.update_status(pk, new_status, user)
             serializer = self.get_serializer(po)
             return Response({'status': 'success', 'data': serializer.data})
         except ValueError as e: 
