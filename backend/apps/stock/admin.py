@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import StockLevel, StockMovement, StockAdjustment
 
-# Register your models here.
+admin.site.register(StockLevel)
+admin.site.register(StockMovement)
+admin.site.register(StockAdjustment)
