@@ -111,15 +111,15 @@ class PurchaseOrderService:
                 )
         # 4. Update PO status
         all_items = po.items.all()
-        all_recieved = all(item.is_fully_recived for item in all_items)
+        all_received = all(item.is_fully_received for item in all_items)
         po.status = (
-            PurchaseOrder.Status.RECEIVED if all_recieved
+            PurchaseOrder.Status.RECEIVED if all_received
             else PurchaseOrder.Status.PARTIALLY_RECEIVED
         )
         po.save()
 
         # 5. Resolve LOW_STOCK alerts fro product we just restocked
-        received_product_ids = [i['product_d'] for i in items_data]
+        received_product_ids = [i['product_id'] for i in items_data]
         Alert.objects.filter(
             location=po.destination_location, 
             type__in=[Alert.AlertType.LOW_STOCK, Alert.AlertType.OUT_OF_STOCK], 

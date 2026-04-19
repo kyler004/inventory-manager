@@ -69,7 +69,7 @@ class ProductViewSet(viewsets.ModelViewSet):
         product = self.get_object()
         product.is_active = False
         product.save()
-        return Reponse(
+        return Response(
             {'status': 'success', 'message': 'Product deactivated'}, 
             status=status.HTTP_200_OK
         )

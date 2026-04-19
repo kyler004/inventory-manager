@@ -14,7 +14,8 @@ class StandardPagination(PageNumberPagination):
     def get_paginated_response(self, data):
         return Response({
             'status' : 'success', 
-            'data' : {
+            'data' : data,
+            'meta' : {
                 'page': self.page.number, 
                 'page_size': self.get_page_size(self.request), 
                 'total_count': self.page.paginator.count, 

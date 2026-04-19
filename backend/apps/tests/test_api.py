@@ -123,7 +123,7 @@ class TestProductEndpoints:
         })
 
         assert response.status_code == status.HTTP_201_CREATED
-        assert response.data['data']['name'] == 'Test Product'
+        assert response.data['name'] == 'Test Product'
 
     def test_delete_product_soft_deletes(self, admin_client):
         """

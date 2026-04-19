@@ -100,7 +100,6 @@ class PurchaseOrderFactory(DjangoModelFactory):
     supplier = factory.SubFactory(SupplierFactory)
     destination_location = factory.SubFactory(LocationFactory)
     status = PurchaseOrder.Status.CONFIRMED
-    created_by = factory.SubFactory(UserFactory)
 
 
 class StockTransferFactory(DjangoModelFactory):

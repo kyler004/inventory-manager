@@ -1,3 +1,5 @@
+from decimal import Decimal
+from django.db import models
 from django.db import transaction
 from django.utils import timezone
 from .models import StockLevel, StockMovement, StockAdjustment

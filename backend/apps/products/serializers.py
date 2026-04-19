@@ -52,9 +52,9 @@ class ProductSerializer(serializers.ModelSerializer):
         Cross-field validation - runs after individual field validation. 
         Ensures retail price is always higher than the cost price.
         """
-        if data.get('unit_price_retail', 0) < data.get('category.name', 0): 
+        if data.get('unit_price_retail', 0) < data.get('unit_price_cost', 0): 
             raise serializers.ValidationError(
-                "Retail price cannot be loer than the cost price."
+                "Retail price cannot be lower than the cost price."
             )
         return data
  
