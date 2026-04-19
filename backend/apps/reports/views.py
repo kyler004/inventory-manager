@@ -24,6 +24,17 @@ class StockValuationView(APIView):
         )
         return Response({'status': 'success', 'data': data})
 
+class ShrinkageView(APIView): 
+    permission_classes = [IsStoreManagerOrAbove]
+
+    def get(self, request): 
+        data = ShrinkageReport.generate(
+            location_id=request.query_params.get('location'), 
+            date_from=request.query_params.get('date_from'), 
+            date_to=request.query_params.get('date_to'), 
+        )
+        return Response({'status': 'success', 'data' : data})
+
 class TurnoverView(APIView):
     permission_classes = [IsStoreManagerOrAbove]
 
