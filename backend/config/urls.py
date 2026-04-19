@@ -11,4 +11,7 @@ urlpatterns = [
     # Auto-generated API documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'), 
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema') ,name='docs'), 
+
+    # Path for reports
+    path('reports/', include('apps.reports.urls')), 
 ]
