@@ -9,26 +9,23 @@ export const useStockValuation = (params?: Record<string, unknown>) =>
     staleTime: 1000 * 60 * 5,
   });
 
-export const useShrinkage = (params?: Record<string, unknown>) => {
+export const useShrinkage = (params?: Record<string, unknown>) =>
   useQuery({
     queryKey: ["reports", "shrinkage", params],
     queryFn: () => reportsApi.getShrinkage(params),
     staleTime: 1000 * 60 * 5,
   });
-};
 
-export const useTurnover = (params?: Record<string, unknown>) => {
+export const useTurnover = (params?: Record<string, unknown>) =>
   useQuery({
     queryKey: ["reports", "turnover", params],
     queryFn: () => reportsApi.getTurnover(params),
     staleTime: 1000 * 60 * 5,
   });
-};
 
-export const useDeadStock = (params?: Record<string, unknown>) => {
+export const useDeadStock = (params?: Record<string, unknown>) =>
   useQuery({
     queryKey: ["reports", "dead-stock", params],
     queryFn: () => reportsApi.getDeadStock(params),
     staleTime: 1000 * 60 * 5,
   });
-};
